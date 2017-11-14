@@ -1,0 +1,14 @@
+{% extends "base.html"%}
+
+{%block content%}
+<p>Topics</p>
+<ul>
+    {%for t in ts%}
+        <li>
+        <a href = "{%url 'llapp1:topic' t.id %}">{{t}}</a>
+        </li>
+    {%empty%}
+        <li>No topics have been added yet.</li>
+    {%endfor%}
+</ul>
+{%endblock content%}
