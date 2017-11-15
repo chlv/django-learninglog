@@ -1,0 +1,12 @@
+{%extends "base.html"%}
+{%block content%}
+<p><a href="{%url 'llapp1:topic' topic.id%}">{{topic}}</a></p>
+<p>Edit entry</p>
+<form action="{%url 'llapp1:edit_entry' entry.id%}" method="post">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button name="summit">Save Change</button>
+
+</form>
+
+{%endblock content%}

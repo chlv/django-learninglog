@@ -11,7 +11,7 @@ class Topic(models.Model):
 class Entry(models.Model):
 	topic = models.ForeignKey(Topic)
 	text = models.TextField()
-	date_add = models.DateTimeField()
+	date_add = models.DateTimeField(auto_now_add=True)
 
 	class Meta:
 		verbose_name_plural = "Entries"\
