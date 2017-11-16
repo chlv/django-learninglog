@@ -51,9 +51,9 @@ def	new_entry(request,topic_id):
 	context = {"topic":topic,"form":form}
 	return render(request,"new_entry.html",context)
 
-def edit_entry(request,topic_id):
+def edit_entry(request,entry_id):
 	"""编辑现有的条目"""
-	entry = Entry.objects.get(id=topic_id)
+	entry = Entry.objects.get(id=entry_id)
 	topic = entry.topic
 
 	if request.method != "POST":
@@ -64,7 +64,7 @@ def edit_entry(request,topic_id):
 		form = EntryForm(instance=entry,data=request.POST)
 		if form.is_valid():
 			form.save()
-			return HttpResponseRedirect(reverse("llapp1:topic",args=[topic_id]))
+			return HttpResponseRedirect(reverse("llapp1:topic",args=[topic.id]))
 
 	context = {"entry":entry,"topic":topic,"form":form}
 	return render(request,"edit_entry.html",context)
